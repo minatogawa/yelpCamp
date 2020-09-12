@@ -1,0 +1,51 @@
+<%- include ('../partials/header') %>
+
+<div class="container">
+	<div class="card mb-2">
+	  	<img class="card-img-top" src=<%=data.image%> alt="Card image cap">
+	  	<div class="card-body">
+			<h5 class="card-title"><%=data.title%></h5>
+			<p class="card-text"><%=data.post%></p>
+			<p class="card-text"><em>Created by <%=data.author.username%></em></p>
+	  	</div>
+		<%if(currentUser && currentUser._id.equals(data.author.id)){%>
+			<div class="d-flex flex-row m-2">
+				<a href="/camps/<%=data._id%>/edit"><button type="button" class="btn btn-outline-secondary mr-2">Edit</button></a>
+				<form action="/camps/<%=data._id%>?_method=DELETE" method="POST">
+					<button type="submit" class="btn btn-outline-danger">Delete</button>		
+				</form>	
+
+			</div>
+		<%}%>
+	</div>
+	
+
+		
+
+	
+	
+	<ul class="list-group list-group-flush">
+		<a href="/camps/<%=data._id%>/comments/new"><button type="button" class="btn btn-sm btn-outline-success float-right">Comment</button></a>
+		<%for(item of data.comments){%>
+			<li class="list-group-item my-2">
+				<p class="card-text m-0"><strong><%=item.author.username%></strong></p>
+				<p><%=item.commentary%></p>
+				<%if(currentUser && item.author.id.equals(currentUser._id)){%>
+					<div class="d-flex flex-row">
+						<a href="/camps/comments/<%=item._id%>/edit"><button type="button" class="btn btn-sm btn-outline-secondary mr-2">Edit</button></a>
+						<form action="/camps/comments/<%=item._id%>/delete?_method=DELETE" method="POST">
+							<button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>		
+						</form>	
+					</div>
+				
+				<%}%>
+			</li>
+	  	<%}%>
+	</ul>
+	
+	
+	
+</div>
+<%- include ('../partials/footer') %>
+
+

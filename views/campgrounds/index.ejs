@@ -1,0 +1,26 @@
+<%- include ('../partials/header.ejs') %>
+
+<div class="container">
+	<div class="jumbotron">
+	  	<h1 class="display-4">YelpCamp 2</h1>
+	  	<hr class="my-4">
+	  	<p class="lead">
+		<a class="btn btn-primary btn-lg" href="/camps/new" role="button">Add Post</a>
+	  	</p>
+	</div>
+	
+	<div class="card-columns">
+		<%for(item of data){%>
+			<div class="card">
+				<a href="/camps/<%=item._id%>"><img class="card-img-top" src=<%=item.image%> alt="Card image cap"></a>
+				<div class="card-body">
+				  <h5 class="card-title"><%=item.title%></h5>
+				  <p class="card-text text-truncate"><%=item.post%></p>
+				</div>
+			</div>
+		<%}%>
+	</div>
+</div>
+
+
+<%- include ('../partials/footer.ejs') %>

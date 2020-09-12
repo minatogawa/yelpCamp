@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+<h1 class="text-center"><%=data.author.username%> Comment!</h1>
+<div class="container w-50">
+	<form action="/camps/comments/<%=data._id%>/edit?_method=PUT" method="POST">
+		<div class="form-group">
+			<label for="exampleFormControlTextarea1">Edit Comment!</label>
+			<textarea name="commentary" class="form-control" id="exampleFormControlTextarea1" rows="3"><%=data.commentary%></textarea>
+		</div>
+		<button type="submit" class="btn btn-outline-primary">Submit</button>
+	</form>
+</div>
+
+<%- include('../partials/footer') %>

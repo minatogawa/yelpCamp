@@ -1,0 +1,22 @@
+<%- include('../partials/header') %>
+
+<div class="container w-50">
+	<h1 class="text-center">Create new post!</h1>
+	<form action="/camps" method="POST">
+		<div class="form-group">
+			<label>Title</label>
+			<input name="title" type="text" class="form-control" placeholder="Your title">
+		</div>
+		<div class="form-group">
+			<label>Image</label>
+			<input name="image" type="url" class="form-control" placeholder="Your image url">
+		</div>
+		<div class="form-group">
+			<label for="exampleFormControlTextarea1">Your Post!</label>
+			<textarea name="post" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+		</div>
+		<button type="submit" class="btn btn-outline-primary">Submit</button>
+	</form>
+</div>
+
+<%- include('../partials/footer') %>
